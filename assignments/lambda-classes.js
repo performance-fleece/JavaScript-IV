@@ -32,6 +32,7 @@ class Student extends Person {
     this.previousBackground = stustats.previousBackground;
     this.className = stustats.className;
     this.favSubjects = stustats.favSubjects;
+    this.currGrade = stustats.currGrade;
   }
   listSubjects() {
     let subjstring = this.favSubjects.join(", ");
@@ -69,19 +70,41 @@ const delilah = new Instructor({
     catchPhrase : 'Queen stays Queen',
 })
 
+const nancy = new Instructor({
+    name : 'Nancy',
+    location : 'Manhattan Beach',
+    age : 60,
+    gender : 'female',
+    favLanguage : 'Japanese',
+    specialty : 'Crafting',
+    catchPhrase : 'Oh.... Jeremy',
+})
+
 const sam = new Student ({
     name: 'Sam',
     location : 'Wollacott',
     age: 9,
     gender: 'male',
     previousBackground : 'Head of Security',
+    className : 'WebPT8',
+    favSubjects : ['Snoozing', 'Farting', 'Eating'],
+    currGrade : 95,
+})
+
+const jeremy = new Student ({
+    name: 'Jeremy',
+    location : 'Gardena',
+    age: 37,
+    gender: 'male',
+    previousBackground : 'Datacenter Tech',
     className : 'WebPT5',
-    favSubjects : ['Snoozing', 'Farting', 'Eating']
+    favSubjects : ['JavaScript', 'CSS', 'HTML'],
+    currGrade : 88,
 })
 
 const lauren = new ProjectManager ({
     name : 'Lauren',
-    location : 'Wollacott',
+    location : 'Palos Verdes',
     age : 35,
     gender : 'female',
     favLanguage : 'DeliScript',
@@ -91,4 +114,34 @@ const lauren = new ProjectManager ({
     favInstructor : 'Delilah',
 })
 
-delilah.demo('JavaScript')
+const bill = new ProjectManager ({
+    name : 'Bill',
+    location : 'Gardena',
+    age : 99,
+    gender : 'male',
+    favLanguage : 'German',
+    specialty : 'Painting',
+    catchPhrase : 'Next-O',
+    gradClassName : 'CS1',
+    favInstructor : 'Nancy',
+})
+
+// Instructor Tests
+delilah.demo('JavaScript');
+nancy.speak();
+nancy.demo('Scrapbooking');
+delilah.grade(sam, 'Sneezing I');
+
+//Student Tests
+jeremy.speak();
+sam.listSubjects();
+sam.PRAssignment('Sneezing II');
+sam.sprintChallenge('Sleeping IV');
+
+//PM Tests
+bill.speak();
+lauren.demo('Creative Songwriting');
+bill.grade(sam, 'Sneezing IV');
+lauren.standUp('WebPT72');
+bill.debugsCode(sam, 'Sleeping III');
+
