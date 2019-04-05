@@ -24,6 +24,27 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
+  regrade(student) {
+    let newgrade = (student.currGrade + (Math.floor(Math.random() * 201) - 100));
+    console.log(`${student.name}'s grade is ${student.currGrade}. After his latest assignment it is now ${newgrade}.`);
+    student.currGrade = newgrade;
+  
+  }
+  graduate(student) {
+    if (student.currGrade >= 70) {
+      console.log(`${student.name} has graduated!`);
+    } else {
+      do {
+        this.regrade(student);
+      }
+      while (student.currGrade < 70) {
+        if (student.currGrade >= 70) {
+          console.log(`${student.name} has finally graduated!`);
+
+        }
+      }
+    }
+  }
 }
 
 class Student extends Person {
@@ -35,8 +56,9 @@ class Student extends Person {
     this.currGrade = stustats.currGrade;
   }
   listSubjects() {
-    let subjstring = this.favSubjects.join(", ");
     console.log(`${this.favSubjects.join(", ")}`);
+    
+    
   }
   PRAssignment(subject) {
     console.log(`${this.name} has submitted a PR for ${subject}`);
@@ -88,7 +110,7 @@ const sam = new Student ({
     previousBackground : 'Head of Security',
     className : 'WebPT8',
     favSubjects : ['Snoozing', 'Farting', 'Eating'],
-    currGrade : 95,
+    currGrade : 65,
 })
 
 const jeremy = new Student ({
@@ -99,7 +121,7 @@ const jeremy = new Student ({
     previousBackground : 'Datacenter Tech',
     className : 'WebPT5',
     favSubjects : ['JavaScript', 'CSS', 'HTML'],
-    currGrade : 88,
+    currGrade : 42,
 })
 
 const lauren = new ProjectManager ({
@@ -145,3 +167,7 @@ bill.grade(sam, 'Sneezing IV');
 lauren.standUp('WebPT72');
 bill.debugsCode(sam, 'Sleeping III');
 
+
+//Stretch Tests
+bill.graduate(sam);
+lauren.graduate(jeremy);
